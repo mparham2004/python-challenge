@@ -1,0 +1,2 @@
+main_text_file
+print path test

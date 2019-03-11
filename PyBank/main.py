@@ -1,9 +1,10 @@
-test
 import os
 import csv
+import pandas as pd
 
 # Path to collect data from the folder
 budget_csv = os.path.join('..', 'Resources', 'budget_data.csv')
+
 
 
 with open(budget_csv, 'r') as csvfile:
@@ -14,13 +15,33 @@ with open(budget_csv, 'r') as csvfile:
         totals.append(value)
 
 #calculate a column showing differences by month, then get average, greatest increase and decrease
-differences = 
+
+
+
+#use pandas to read data
+budget_data_pd = pd.read_csv(budget_csv)
+
+
+
+df = budget_data_pd['Profit/Losses']
+monthly_change = df.diff()
+average_change = df.diff().max()
+budget_data_pd["monthly_change"] = monthly_change
 
 print ("")
 print ("Financial Analysis")
 print ("-------------------------------")
 print ("Total Months: {}".format(row_count))
 print ("Total: ${}".format(sum(totals)))
-print ("Average Change: $")
-print ("Greatest Increase in Profits: $")
-print ("Greatest Decrease in Profits: $")
+print ("Average Change: $"+ str(monthly_change.mean()))
+print ("Greatest Increase in Profits: $" + str(monthly_change.max()) + " date")
+print ("Greatest Decrease in Profits: $" + str(monthly_change.min())+ " date")
+
+budget_data_pd.head()
+
+with open("main_text_file.txt",'w',encoding = 'utf-8') as f:
+   f.write("main_text_file\n")
+   f.write("print path test")
+
+   
+
