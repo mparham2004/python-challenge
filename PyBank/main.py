@@ -33,9 +33,11 @@ print ("Financial Analysis")
 print ("-------------------------------")
 print ("Total Months: {}".format(row_count))
 print ("Total: ${}".format(sum(totals)))
-print ("Average Change: $"+ str(monthly_change.mean()))
+print ("Average Change: $"+ str(round(monthly_change.mean(),2)))
 print ("Greatest Increase in Profits: $" + str(monthly_change.max()) + " date")
 print ("Greatest Decrease in Profits: $" + str(monthly_change.min())+ " date")
+
+
 
 budget_data_pd.head()
 
